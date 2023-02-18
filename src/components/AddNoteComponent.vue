@@ -1,14 +1,37 @@
 <template>
-  <div>
-    <input type="text" v-model="noteName" />
-    <button @click="addTodo">add todo</button>
-    <input
-      type="text"
-      v-for="(todo, index) in todoNames"
-      :key="index"
-      v-model="todoNames[index]"
-    />
-    <button @click="saveNote">save note</button>
+  <div class="addNote">
+    <div class="addNote__name">
+      <label class="addNote__name-label" for="name">Назва нотатки:</label>
+      <input
+        class="addNote__name-input"
+        id="name"
+        type="text"
+        v-model="noteName"
+        placeholder="Назва завдання..."
+        autocomplete="off"
+      />
+    </div>
+    <div class="addNote__inputs">
+      <label
+        class="addNote__input-label"
+        v-if="todoNames.length >= 1"
+        for="task"
+        >Що зробити? (todo)</label
+      >
+      <input
+        id="task"
+        type="text"
+        v-for="(todo, index) in todoNames"
+        :key="index"
+        v-model="todoNames[index]"
+        required
+        placeholder="Опис..."
+      />
+      <button class="btn btn-add" @click="addTodo">Додати задачу</button>
+      <button class="btn" v-if="todoNames.length >= 1" @click="saveNote">
+        Зберегти
+      </button>
+    </div>
   </div>
 </template>
 

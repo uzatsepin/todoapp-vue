@@ -1,0 +1,33 @@
+.edit {
+  padding: 50px 0;
+  &__descr {
+    max-width: 500px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  &__descr {
+    color: $descrColor;
+  }
+  &__name {
+    margin-top: 50px;
+  }
+  &__list {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  &__list-item {
+    list-style-type: none;
+  }
+  &__btns {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+}

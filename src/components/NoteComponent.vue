@@ -1,12 +1,17 @@
 <template>
-  <div>
-    <h3>{{ note.name }}</h3>
-    <router-link :to="'/edit/' + note.id">edit</router-link>
-    <ul>
+  <div class="todo__item">
+    <div class="todo__item-wrapper">
+      <h3 class="todo__item-title">{{ note.name }}</h3>
+      <router-link class="todo__item-link" :to="'/edit/' + note.id"
+        >📝</router-link
+      >
+    </div>
+    <ul class="todo__item-lists">
       <li
-        class="paragraph__item"
+        class="todo__item-list"
         v-for="(todo, index) in note.todos"
         :key="index"
+        :class="{ todo__checked: todo.isChecked }"
       >
         <input
           class="paragraph__checkbox"
@@ -31,9 +36,4 @@ export default {
 };
 </script>
 
-<style>
-.paragraph__item {
-  display: flex;
-  justify-content: center;
-}
-</style>
+<style></style>

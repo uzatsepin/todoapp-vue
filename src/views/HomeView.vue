@@ -1,9 +1,15 @@
 <template>
-  <div class="home">
-    <button @click="openModal">Add Note</button>
-    <div>
+  <div class="todo">
+    <h1 class="todo__title">ToDo App 📄</h1>
+    <div class="todo__descr" v-if="getAllNotes.length === 0">
+      Наразі, ще нічого не додано. Натисніть кнопку "Додати нотатку", для того,
+      щоб додати нотатку з нагадуваннями
+    </div>
+    <div class="todo__items">
       <NoteComponent v-for="note in getAllNotes" :key="note?.id" :note="note" />
     </div>
+    <button class="todo__btn btn" @click="openModal">Додатки нотатку</button>
+
     <AddNoteView
       v-if="isModalViewVisible"
       @addNoteViewClose="onAddNoteViewClose"
@@ -41,3 +47,5 @@ export default {
   },
 };
 </script>
+
+<style lang="scss"></style>
