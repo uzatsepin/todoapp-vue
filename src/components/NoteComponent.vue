@@ -14,7 +14,7 @@
         :class="{ todo__checked: todo.isChecked }"
       >
         <input
-          class="paragraph__checkbox"
+          class="checkbox"
           type="checkbox"
           v-model="todo.isChecked"
           disabled

@@ -7,35 +7,33 @@
         виконаним чи видалили
       </p>
     </div>
-    <div class="edit__name">
-      <label class="edit__label" for="name">Назва нотатки:</label>
-      <input name="name" type="text" v-model="noteName" />
-    </div>
-    <ul class="edit__list">
-      <li
-        class="edit__list-item"
-        v-for="(todo, index) in noteTodos"
-        :key="index"
-      >
-        <input
-          class="paragraph__checkbox"
-          type="checkbox"
-          v-model="todo.isChecked"
-        />
-        <input class="edit__list-input" type="text" v-model="todo.name" />
-      </li>
-      <div class="edit__btns">
-        <button class="btn" @click="saveEditedNote">Зберегти</button>
-        <button class="btn-cancel" @click="cancelEditing">Відмінити</button>
-        <button class="btn-cancel" @click="confirmDelete">Видалити</button>
+    <div class="edit__content">
+      <div class="edit__name">
+        <label class="edit__label" for="name">Назва нотатки:</label>
+        <input name="name" type="text" v-model="noteName" />
       </div>
-      <DeleteNoteView
-        v-if="isModalViewVisible"
-        :isModalViewVisible="isModalViewVisible"
-        @closeModal="onClickCloseModal"
-        @confirmDelete="onDeleteNote"
-      />
-    </ul>
+      <ul class="edit__list">
+        <li
+          class="edit__list-item"
+          v-for="(todo, index) in noteTodos"
+          :key="index"
+        >
+          <input class="checkbox" type="checkbox" v-model="todo.isChecked" />
+          <input class="edit__list-input" type="text" v-model="todo.name" />
+        </li>
+        <div class="edit__btns">
+          <button class="btn" @click="saveEditedNote">Зберегти</button>
+          <button class="btn-cancel" @click="cancelEditing">Відмінити</button>
+          <button class="btn-cancel" @click="confirmDelete">Видалити</button>
+        </div>
+        <DeleteNoteView
+          v-if="isModalViewVisible"
+          :isModalViewVisible="isModalViewVisible"
+          @closeModal="onClickCloseModal"
+          @confirmDelete="onDeleteNote"
+        />
+      </ul>
+    </div>
   </div>
 </template>
 
