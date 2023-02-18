@@ -1,18 +1,43 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <button @click="openModal">Add Note</button>
+    <div>
+      <NoteComponent v-for="note in getAllNotes" :key="note?.id" :note="note" />
+    </div>
+    <AddNoteView
+      v-if="isModalViewVisible"
+      @addNoteViewClose="onAddNoteViewClose"
+    />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import NoteComponent from "@/components/NoteComponent.vue";
+import AddNoteView from "./AddNoteView.vue";
+import { mapGetters } from "vuex";
 
 export default {
+  data() {
+    return {
+      isModalViewVisible: false,
+    };
+  },
   name: "HomeView",
   components: {
-    HelloWorld,
+    NoteComponent,
+    AddNoteView,
+  },
+  computed: {
+    ...mapGetters(["getAllNotes"]),
+  },
+  methods: {
+    addNote() {},
+    openModal() {
+      this.isModalViewVisible = true;
+    },
+    onAddNoteViewClose() {
+      this.isModalViewVisible = false;
+    },
   },
 };
 </script>
