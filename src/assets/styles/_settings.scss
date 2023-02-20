@@ -46,6 +46,22 @@ input[type="text"] {
   }
 }
 
-.checkbox {
-  clip-path: circle(46% at 50% 50%);
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #2196F3;
+  border-color: #2196F3;
+  cursor: unset;
+}
+
+input[type="checkbox"]:focus {
+  box-shadow: 0 0 3px #2196F3;
 }

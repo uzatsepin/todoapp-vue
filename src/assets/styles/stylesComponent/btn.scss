@@ -42,3 +42,40 @@
   background-color: #f14040;
   transition: 0.3s ease-in-out;
 }
+
+
+.btn-delete {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  border: 2px solid #f87979;
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 5px #333;
+  overflow: hidden;
+  transition: 0.3s;
+  margin-left: 10px;
+  &:hover {
+    background-color: rgb(245, 207, 207);
+    transform: scale(1.2);
+    box-shadow: 0 0 4px #111;
+    transition: 0.3s;
+  }
+  & svg {
+    color: #f87979;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+    width: 13px;
+    height: 13px;
+  }
+  &:focus {
+    transition: 0.3s;
+    transform: translateY(-2px);
+  }
+}
