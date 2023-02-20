@@ -10,12 +10,12 @@
     <div class="edit__content">
       <div class="edit__name">
         <label class="edit__label" for="name">Назва нотатки:</label>
-        <input name="name" type="text" v-model="noteName" />
+        <input name="name" type="text" v-model="note.name" />
       </div>
       <ul class="edit__list">
         <li
           class="edit__list-item"
-          v-for="(todo, index) in noteTodos"
+          v-for="(todo, index) in note.todos"
           :key="index"
         >
           <input class="checkbox" type="checkbox" v-model="todo.isChecked" />
@@ -58,7 +58,6 @@
 <script>
 import router from "@/router";
 import { mapGetters } from "vuex";
-import { Note } from "@/models/Note";
 import DeleteNoteView from "./DeleteNoteView.vue";
 import { TodoItem } from "@/models/TodoItem";
 
@@ -66,36 +65,29 @@ export default {
   data() {
     return {
       isModalViewVisible: false,
-      noteName: "",
-      noteTodos: [],
-      noteId: 0,
+      note: {},
     };
   },
   computed: {
     ...mapGetters(["getNoteById"]),
   },
   mounted() {
-    this.noteId = Number(this.$route.params.id);
-    let note = this.getNoteById(this.noteId);
-    this.noteName = note.name;
-    this.noteTodos = structuredClone(note.todos);
+    let noteId = Number(this.$route.params.id);
+    this.note = structuredClone(this.getNoteById(noteId));
   },
   methods: {
     saveEditedNote() {
-      this.$store.commit(
-        "saveEditedNote",
-        new Note(this.noteId, this.noteName, this.noteTodos)
-      );
+      this.$store.commit("saveEditedNote", this.note);
       this.navigateToHomePage();
     },
     addTodo() {
-      this.noteTodos.push(new TodoItem("", false));
+      this.note.todos.push(new TodoItem("", false));
     },
     deleteTodo(index) {
-      this.noteTodos.splice(index, 1);
+      this.note.todos.splice(index, 1);
     },
     onDeleteNote() {
-      this.$store.commit("deleteNote", { id: this.noteId });
+      this.$store.commit("deleteNote", { id: this.note.id });
       this.navigateToHomePage();
     },
     cancelEditing() {

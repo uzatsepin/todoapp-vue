@@ -20,11 +20,10 @@ export default createStore({
       state.notes.push(newNote);
     },
     saveEditedNote(state, editedNote) {
-      state.notes.find((note) => note.id == editedNote.id).name =
-        editedNote.name;
+      let note = state.notes.find((note) => note.id == editedNote.id);
 
-      state.notes.find((note) => note.id == editedNote.id).todos =
-        editedNote.todos;
+      note.name = editedNote.name;
+      note.todos = editedNote.todos;
     },
     deleteNote(state, payload) {
       state.notes = state.notes.filter((note) => note.id != payload.id);
