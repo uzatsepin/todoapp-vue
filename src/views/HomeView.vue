@@ -6,7 +6,13 @@
       щоб додати нотатку з нагадуваннями
     </div>
     <div class="todo__items">
-      <NoteComponent v-for="note in getAllNotes" :key="note?.id" :note="note" />
+      <NoteComponent
+        v-for="note in getAllNotes"
+        :key="note?.id"
+        :note="note"
+        :isModalViewVisible="isModalViewVisible"
+        @confirmDelete="onConfirmDelete"
+      />
     </div>
     <button class="todo__btn btn" @click="openModal">Додатки нотатку</button>
 
@@ -37,7 +43,6 @@ export default {
     ...mapGetters(["getAllNotes"]),
   },
   methods: {
-    addNote() {},
     openModal() {
       this.isModalViewVisible = true;
     },

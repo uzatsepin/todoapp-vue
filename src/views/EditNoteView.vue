@@ -59,7 +59,6 @@ export default {
     this.noteId = Number(this.$route.params.id);
     let note = this.getNoteById(this.noteId);
     this.noteName = note.name;
-    // this.noteTodos = note.todos;
     this.noteTodos = structuredClone(note.todos);
   },
   methods: {
