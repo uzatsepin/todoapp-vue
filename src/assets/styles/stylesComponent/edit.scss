@@ -32,6 +32,8 @@
   }
   &__list-item {
     list-style-type: none;
+    display: flex;
+    align-items: center;
   }
   &__label {
     @media (max-width: 390px) {

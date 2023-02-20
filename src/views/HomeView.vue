@@ -11,7 +11,6 @@
         :key="note?.id"
         :note="note"
         :isModalViewVisible="isModalViewVisible"
-        @confirmDelete="onConfirmDelete"
       />
     </div>
     <button class="todo__btn btn" @click="openModal">Додатки нотатку</button>

@@ -43,11 +43,8 @@
   transition: 0.3s ease-in-out;
 }
 
-
 .btn-delete {
-  position: absolute;
-  top: -10px;
-  right: -10px;
+  position: relative;
   width: 25px;
   height: 25px;
   border-radius: 25px;
@@ -78,4 +75,10 @@
     transition: 0.3s;
     transform: translateY(-2px);
   }
+}
+
+.btn-delete-card {
+  position: absolute;
+  top: -10px;
+  right: -10px;
 }

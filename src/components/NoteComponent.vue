@@ -5,7 +5,10 @@
       <router-link class="todo__item-link" :to="'/edit/' + note.id"
         >📝</router-link
       >
-      <button class="btn-delete" @click="this.isModalViewVisible = true">
+      <button
+        class="btn-delete btn-delete-card"
+        @click="this.isModalViewVisible = true"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
