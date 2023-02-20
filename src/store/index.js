@@ -20,9 +20,6 @@ export default createStore({
       state.notes.push(newNote);
     },
     saveEditedNote(state, editedNote) {
-      // state.notes = state.notes.filter((note) => note.id != editedNote.id);
-      // state.notes.push(editedNote);
-
       state.notes.find((note) => note.id == editedNote.id).name =
         editedNote.name;
 
